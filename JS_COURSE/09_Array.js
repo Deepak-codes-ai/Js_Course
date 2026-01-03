@@ -29,3 +29,29 @@ console.log(newArr)
 
 const newArr1 = myArrays.splice(1, 4) // return the value which is bw the given value numbers with last value numbers vaules
 console.log(newArr1)
+
+
+const marvel_heros = ['Tony Syark', 'Thor', 'Spider Man'];
+const Universe_Boss = ['Iron Man', 'Volverine', 'Super Man'];
+// marvel_heros.push(Universe_Boss)
+// console.log(marvel_heros);
+
+
+const All_Heros = marvel_heros.concat(Universe_Boss); //Merged
+// console.log(All_Heros);
+
+const AllnewHeros = [...marvel_heros, ...Universe_Boss]; //Spread Operators Merged 
+console.log(AllnewHeros);
+
+
+const depthArray = [1, 2, 3, [4, 5], 6, [7, [8, 9]]]
+const real_depthArray = depthArray.flat(2)
+console.log(real_depthArray)
+// console.log(marvel_heros[3][1]);
+
+
+console.log(Array.isArray("Deepak"));
+console.log(Array.from("Deepak"));
+console.log(Array.from({ name: "Deepak" }));
+
+

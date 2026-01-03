@@ -108,3 +108,5 @@ let nums = [2, 4, 6];
 
 console.log(nums.some(n => n % 2 !== 0)); // false
 console.log(nums.every(n => n % 2 === 0)); // true
+
+

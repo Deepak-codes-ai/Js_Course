@@ -25,4 +25,45 @@ function Welcome(user = "User") {
 Welcome();
 
 
+function addTwoNumbers(numb1, numb2) {
+    return numb1 + numb2;
+}
+const result = addTwoNumbers(2, 3);
+console.log('Result :', result);
+
+
+//*************REST OPER**************** */
+
+function calculateCard(val1, val2, ...params) {
+    return params;
+}
+console.log(calculateCard(200, 300, 400, 500))
+
+
+const user = {
+    name: "Deepak",
+    age: 22
+}
+function handleUser(object) {
+    console.log(`UserName is ${object.name} and age is ${object.age}`)
+}
+// handleUser(user);
+handleUser({
+    name: "Deepak",
+    age: 22
+});
+
+
+
+const Array = [100, 200, 300, 400];
+
+function returnedArray(getarray) {
+    return getarray[1];
+}
+
+// console.log(returnedArray(Array));
+console.log(returnedArray([100, 200, 300, 400]));
+
+
+
 

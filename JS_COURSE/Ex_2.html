@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+</head>
+<style>
+  body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background: grey;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container h1 {
+    font-family: sans-serif;
+    font-size: 50px;
+  }
+
+  form label {
+    font-size: 25px;
+  }
+
+  form input {
+    width: 50px;
+    height: 25px;
+  }
+
+  #result {
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  #btn {
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <h1>BMI Calculator</h1>
+    <form>
+      <p><label>Height in CM : </label><input type="type" id="height"></p>
+      <p><label>Weight in KG : </label><input type="type" id="Weight"></p>
+      <button type="submit" id="btn">Calculate</button>
+
+      <div id="result"></div>
+      <div class="weight-guide">
+        <h2>BMI Weight Guide</h2>
+        <p>Under Weight = 18.96kg</p>
+        <p>Normal Weight = 48.96kg</p>
+        <p>Over Weight = 88.96kg</p>
+      </div>
+    </form>
+  </div>
+</body>
+<script>
+  const form = document.querySelector('form');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const height = parseInt(document.querySelector('#height').value);
+    const weight = parseInt(document.querySelector('#Weight').value);
+    const result = document.querySelector('#result');
+
+    if (isNaN(height) || height <= 0) {
+      result.innerHTML = "Please give a valid height";
+      return;
+    }
+
+    if (isNaN(weight) || weight <= 0) {
+      result.innerHTML = "Please give a valid weight";
+      return;
+    }
+
+    const bmi = (weight / ((height * height) / 10000)).toFixed(2);
+
+    result.innerHTML = `Your BMI is <span>${bmi}</span>`;
+  });
+</script>
+
+
+</html>

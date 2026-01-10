@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color-Changer</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .canvas {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        gap: 10px;
+    }
+
+    .colors {
+        display: flex;
+        gap: 10px;
+    }
+
+    h1,
+    h2 {
+        font-family: sans-serif;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    span {
+        border: 1px solid black;
+        width: 70px;
+        height: 70px;
+        cursor: pointer;
+    }
+
+    #blue {
+        background: blue;
+    }
+
+    #yellow {
+        background: yellow;
+    }
+
+    #white {
+        background: white;
+    }
+
+    #grey {
+        background: grey;
+    }
+</style>
+
+<body>
+    <div class="canvas">
+        <h1>Color Changer</h1>
+        <div class="colors">
+            <span id="blue" class="btn"></span>
+            <span id="yellow" class="btn"></span>
+            <span id="white" class="btn"></span>
+            <span id="grey" class="btn"></span>
+        </div>
+        <h2>try Clicking on one of the colors above</h2>
+    </div>
+</body>
+<script>
+    const btn = document.querySelectorAll('.btn')
+    console.log(btn);
+    const body = document.querySelector('body');
+
+    btn.forEach((buttons) => {
+        console.log(buttons);
+        buttons.addEventListener('click', (e) => {
+            console.log(e);
+
+            if (e.target.id === 'blue') {
+                body.style.background = "blue"
+            }
+            else if (e.target.id === 'yellow') {
+                body.style.background = "yellow"
+            }
+            else if (e.target.id === 'white') {
+                body.style.background = "white"
+            }
+            else if (e.target.id === 'grey') {
+                body.style.background = "grey"
+            } else {
+                body.style.background = "white"
+
+            }
+        })
+    });
+
+
+</script>
+
+</html>

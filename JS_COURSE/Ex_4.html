@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Guessing Game</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #111;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrapper {
+            background: #2c2c2c;
+            padding: 25px;
+            border-radius: 15px;
+            width: 400px;
+            color: #fff;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        input[type="number"] {
+            width: 150px;
+            padding: 8px;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        input[type="submit"],
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background: #ff9800;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        .message {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Guess The Number</h1>
+        <p>Guess a number between 1 and 100 (10 attempts)</p>
+
+        <input type="number" id="inputField" />
+        <br />
+        <input type="submit" value="Submit Guess" id="submitBtn" />
+
+        <div class="result">
+            <p>Previous Guesses: <span id="guesses"></span></p>
+            <p>Attempts Left: <span id="attempts">10</span></p>
+            <p class="message" id="message"></p>
+        </div>
+    </div>
+
+    <script>
+        let randomNum = Math.floor(Math.random() * 100) + 1;
+        let attemptsLeft = 10;
+        let guesses = [];
+
+        const inputField = document.getElementById("inputField");
+        const submitBtn = document.getElementById("submitBtn");
+        const guessesSpan = document.getElementById("guesses");
+        const attemptsSpan = document.getElementById("attempts");
+        const message = document.getElementById("message");
+
+        submitBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const guess = Number(inputField.value);
+
+            if (!guess || guess < 1 || guess > 100) {
+                alert("Enter a number between 1 and 100");
+                return;
+            }
+
+            attemptsLeft--;
+            guesses.push(guess);
+
+            guessesSpan.textContent = guesses.join(", ");
+            attemptsSpan.textContent = attemptsLeft;
+
+            if (guess === randomNum) {
+                message.textContent = "🎉 Correct! You won!";
+                endGame();
+            } else if (attemptsLeft === 0) {
+                message.textContent = `❌ Game Over! Number was ${randomNum}`;
+                endGame();
+            } else if (guess < randomNum) {
+                message.textContent = "📉 Too low!";
+            } else {
+                message.textContent = "📈 Too high!";
+            }
+
+            inputField.value = "";
+        });
+
+        function endGame() {
+            inputField.disabled = true;
+            submitBtn.disabled = true;
+
+            const restartBtn = document.createElement("button");
+            restartBtn.textContent = "Start New Game";
+            restartBtn.className = "btn";
+            document.querySelector(".wrapper").appendChild(restartBtn);
+
+            restartBtn.addEventListener("click", () => location.reload());
+        }
+    </script>
+</body>
+
+</html>

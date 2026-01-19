@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Events</title>
+</head>
+
+<body style="background-color: #414141;">
+  <div>
+    <ul id="images" style="display: flex; flex-wrap: wrap; gap: 10px; list-style: none;">
+      <li>
+        <img src="https://picsum.photos/id/1015/200/150" alt="Nature 1" id="Nature1">
+      </li>
+      <li>
+        <img src="https://picsum.photos/id/1025/200/150" alt="Nature 2" id="Nature2">
+      </li>
+      <li>
+        <img src="https://picsum.photos/id/1035/200/150" alt="Nature 3" id="Nature3">
+      </li>
+      <li>
+        <img src="https://picsum.photos/id/1045/200/150" alt="Nature 4" id="Nature4">
+      </li>
+      <li>
+        <img src="https://picsum.photos/id/1055/200/150" alt="Nature 5" id="Nature5">
+      </li>
+      <li>
+        <img src="https://picsum.photos/id/1055/200/150" alt="Nature 5" id="Nature6">
+      </li>
+      <li><a href="https://google.com" id="google" style="color: aliceblue;">Google</a></li>
+    </ul>
+  </div>
+</body>
+<script>
+  // const nature4 = document.getElementById('Nature 4')
+  // nature4.onclick = function () {
+  //   alert('Nature 4');
+  // }
+
+  //attachEventListener
+  //jQuery - on
+  //types,timestamps,defaultPrevented,toElement,SrcElemnets,currentType.clientX,clienty ,screenX,screenY
+
+  // document.getElementById('images').addEventListener(
+  //   'click',
+  //   (event) => {
+  //     console.log('images is clicked');
+  //   },
+  //   false   // bubbling (default)
+  // );
+
+  // document.getElementById('Nature4').addEventListener(
+  //   'click',
+  //   (event) => {
+  //     console.log('Nature 4 is clicked');
+  //     event.stopPropagation();
+  //   },
+  //   false
+  // );
+
+  // document.getElementById('google').addEventListener(
+  //   'ckick',
+  //   (event) => {
+  //     event.preventDefault();
+  //     console.log('Google Clicked');
+  //     event.stopPropagation();
+  //   }, 
+  //   false)
+
+
+  document.querySelector('#images').addEventListener('click', (e) => {
+    console.log(e.target.parentNode);
+    if (e.target.tagName === 'IMG') {
+      console.log(e.target.id);
+      let removeIt = e.target.parentNode
+      // removeIt.remove();
+      removeIt.parentNode.removeChild(removeIt)
+    }
+  }, false)
+</script>
+
+</html>

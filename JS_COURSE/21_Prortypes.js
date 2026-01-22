@@ -82,3 +82,38 @@ String.prototype.trueLength = function () {
 
 anotherUser.trueLength()
 'Deepakram'.trueLength();
+
+
+
+
+// function setUsrName(username) {
+//   this.username = username;
+// }
+
+// function createUser(username, email, password) {
+//   setUsrName.call(this,username);
+//   this.email = email;
+//   this.password = password;
+// }
+
+// const chai = new createUser('Chai', 'chai@fb.com', 123)
+// console.log(chai);
+
+
+const setUsrName = (obj, username) => {
+  obj.username = username;
+}
+
+const createuser = (username, email, password) => {
+  const user = {};
+
+  setUsrName(user, username);
+  user.email = email;
+  user.password = password;
+
+  return user;
+}
+
+const chai = createuser('chai', 'chai@123.com', 123);
+console.log(chai);
+
